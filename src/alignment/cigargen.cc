@@ -554,7 +554,9 @@ std::string AlignmentToMD(std::vector<unsigned char>& alignment, const int8_t *r
 
     } else {
 //      if (num_eq > 0) {
-        md << num_eq; num_eq = 0;
+        if(!(align_op == EDLIB_D && num_d != 0)){
+          md << num_eq; num_eq = 0;
+        }
 //      }
       if (align_op == EDLIB_X) {
         md << ((char) ref_data[alignment_position_start + ref_position]);
